@@ -66,7 +66,7 @@ func New(ctx context.Context, c *Config) (Client, error) {
 	return &s, nil
 }
 
-func (h *h) doReq(ctx context.Context, method, path string, body any) (*http.Response, map[string]any, error) {
+func (h *h) doReq(ctx context.Context, method, path string, body map[string]any) (*http.Response, map[string]any, error) {
 	var b bytes.Buffer
 	if err := json.NewEncoder(&b).Encode(body); err != nil {
 		return nil, nil, fmt.Errorf("failed to encode request body: %w", err)
